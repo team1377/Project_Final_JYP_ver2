@@ -1,15 +1,13 @@
 import streamlit as st
 import folium
 from streamlit_folium import folium_static
-import os
 from openai import OpenAI
 import google.generativeai as genai
 import json
 import re
 import logging
 import random
-
-print(os.getcwd())
+import base64
 
 # 로깅 설정
 logging.basicConfig(level=logging.INFO)
@@ -28,11 +26,50 @@ gemini_model = genai.GenerativeModel('gemini-pro')
 # 페이지 설정
 st.set_page_config(page_title="도쿄 맛집 추천 서비스", layout="wide")
 
+# 배경 이미지 함수
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    return f"data:image/png;base64,{encoded_string.decode()}"
+
+# 사이드바 배경 이미지 설정
+sidebar_bg = add_bg_from_local('sidebar_bg_blu.gif')  # 이미지 경로를 실제 경로로 변경하세요
+
+# 사이드바 배경 이미지 및 스타일 적용
+st.markdown(
+    f"""
+    <style>
+    [data-testid="stSidebar"] > div:first-child {{
+        background-image: url("{sidebar_bg}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }}
+    [data-testid="stSidebar"] {{
+        background-color: rgba(0,0,0,0);
+    }}
+    [data-testid="stSidebar"] > div:first-child > div:first-child {{
+        background-color: rgba(255, 255, 255, 0.1);
+    }}
+    .small-font {{
+        font-size: 14px;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # 제목
 st.title("도쿄 맛집 추천 서비스")
 
-# 사이드바 설정
-st.sidebar.header("검색 옵션")
+# 앱 설명 (메인 영역, 작은 폰트로)
+st.markdown(
+    '<p class="small-font">도쿄 로컬 맛집 추천 서비스입니다. '
+    '원하는 지역과 메뉴를 선택한 후 \'OpenAI GPT\' 또는 \'Google Gemini\' AI 모델을 선택하여 '
+    '맛집 추천을 받아보세요.</p>',
+    unsafe_allow_html=True
+)
+
 
 # 위치 선택
 locations = {
@@ -55,7 +92,8 @@ menus = {
 menu = st.sidebar.selectbox("도쿄 대표 메뉴 선택", list(menus.keys()))
 
 # API 선택
-api_choice = st.sidebar.radio("사용할 API 선택", ["OpenAI GPT", "Google Gemini"])
+api_choice = st.sidebar.radio("API 선택", ["OpenAI GPT", "Google Gemini"])
+
 
 def extract_json(text):
     match = re.search(r'\[.*\]', text, re.DOTALL)
@@ -184,7 +222,7 @@ if st.sidebar.button("맛집 검색"):
 
     # API 호출 및 결과 표시
     try:
-        with st.spinner('맛집 정보를 가져오는 중...'):
+        with st.spinner('로컬 찐 맛집 정보와 지도를 가져오는 중 입니다...'):
             if api_choice == "OpenAI GPT":
                 recommendations = call_openai_api(location, menu)
             else:
@@ -234,10 +272,5 @@ if st.sidebar.button("맛집 검색"):
 
     # 지도 표시
     st.subheader(f"{location}의 {menu} 맛집 지도")
-    folium_static(m, width=700, height=500)
+    folium_static(m, width=500, height=350)
 
-# 앱 설명
-st.sidebar.markdown("---")
-st.sidebar.info("이 앱은 도쿄의 맛집을 추천해주는 서비스입니다. "
-                 "원하는 지역과 메뉴를 선택한 후 'OpenAI GPT' 또는 'Google Gemini' API를 선택하여 "
-                 "맛집 추천을 받아보세요.")
