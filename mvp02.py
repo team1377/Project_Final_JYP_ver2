@@ -8,6 +8,7 @@ import re
 import logging
 import random
 import base64
+from PIL import Image
 
 # 로깅 설정
 logging.basicConfig(level=logging.INFO)
@@ -33,7 +34,7 @@ def add_bg_from_local(image_file):
     return f"data:image/png;base64,{encoded_string.decode()}"
 
 # 사이드바 배경 이미지 설정
-sidebar_bg = add_bg_from_local('sidebar_bg_blu.gif')  # 이미지 경로를 실제 경로로 변경하세요
+sidebar_bg = add_bg_from_local('sidebar_bg.jpg')  # 이미지 경로를 실제 경로로 변경하세요
 
 # 사이드바 배경 이미지 및 스타일 적용
 st.markdown(
@@ -52,24 +53,28 @@ st.markdown(
         background-color: rgba(255, 255, 255, 0.1);
     }}
     .small-font {{
-        font-size: 14px;
+        font-size: 14px !important;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# 제목
-st.title("도쿄 맛집 추천 서비스")
+# 제목과 로고 추가
+col1, col2 = st.columns([1, 4])
+with col1:
+    logo = Image.open('logo.png')  # 로고 이미지 파일 경로를 지정하세요
+    st.image(logo, width=369)
+# with col2:
+   # st.title("도쿄 맛집 추천 서비스")
 
-# 앱 설명 (메인 영역, 작은 폰트로)
-st.markdown(
-    '<p class="small-font">도쿄 로컬 맛집 추천 서비스입니다. '
-    '원하는 지역과 메뉴를 선택한 후 \'OpenAI GPT\' 또는 \'Google Gemini\' AI 모델을 선택하여 '
-    '맛집 추천을 받아보세요.</p>',
-    unsafe_allow_html=True
-)
+# 앱 설명 (메인 영역으로 이동, 작은 폰트로 설정)
+st.markdown('<div class="small-font">  이 앱은 도쿄의 맛집을 추천해주는 서비스입니다.<br> '
+            '  원하는 지역과 메뉴를 선택한 후 \'OpenAI GPT\' 또는 \'Google Gemini\' AI모델을 선택하여 '
+            '  맛집 추천을 받세요.</div>', unsafe_allow_html=True)
 
+# 사이드바 설정
+st.sidebar.header("검색 옵션")
 
 # 위치 선택
 locations = {
@@ -79,6 +84,7 @@ locations = {
     "롯폰기": "roppongi",
     "우에노": "ueno"
 }
+
 location = st.sidebar.selectbox("도쿄 내 관광지 선택", list(locations.keys()))
 
 # 메뉴 선택
@@ -92,7 +98,7 @@ menus = {
 menu = st.sidebar.selectbox("도쿄 대표 메뉴 선택", list(menus.keys()))
 
 # API 선택
-api_choice = st.sidebar.radio("API 선택", ["OpenAI GPT", "Google Gemini"])
+api_choice = st.sidebar.radio("AI 모델 선택", ["OpenAI GPT", "Google Gemini"])
 
 
 def extract_json(text):
@@ -222,7 +228,7 @@ if st.sidebar.button("맛집 검색"):
 
     # API 호출 및 결과 표시
     try:
-        with st.spinner('로컬 찐 맛집 정보와 지도를 가져오는 중 입니다...'):
+        with st.spinner('로컬 맛집 정보와 지도를 가져오는 중 입니다...'):
             if api_choice == "OpenAI GPT":
                 recommendations = call_openai_api(location, menu)
             else:
@@ -238,14 +244,17 @@ if st.sidebar.button("맛집 검색"):
                 
                 # 툴팁 내용 생성 (마우스 오버 시 표시될 정보)
                 tooltip_content = f"""
+                <div style="font-size: 14px;">
                 <b>{restaurant.get('name', 'Unknown')}</b><br>
                 평점: {restaurant.get('rating', 'N/A')}<br>
                 리뷰 수: {restaurant.get('reviews', 'N/A')}<br>
                 가격대: {restaurant.get('price_range', 'N/A')}<br>
+                </div>
                 """
 
                 # 팝업 내용 생성 (클릭 시 표시될 상세 정보)
                 popup_content = f"""
+                <div style="font-size: 16px;">
                 <b>{restaurant.get('name', 'Unknown')}</b><br>
                 평점: {restaurant.get('rating', 'N/A')}<br>
                 리뷰 수: {restaurant.get('reviews', 'N/A')}<br>
@@ -255,6 +264,7 @@ if st.sidebar.button("맛집 검색"):
                 영업시간: {restaurant.get('hours', 'N/A')}<br>
                 가격대: {restaurant.get('price_range', 'N/A')}<br>
                 추천 이유: {restaurant.get('reason', 'N/A')}
+                </div>
                 """
 
                 # 지도에 맛집 위치 표시
@@ -272,5 +282,4 @@ if st.sidebar.button("맛집 검색"):
 
     # 지도 표시
     st.subheader(f"{location}의 {menu} 맛집 지도")
-    folium_static(m, width=500, height=350)
-
+    folium_static(m, width=800, height=500)
