@@ -4,7 +4,7 @@
   * 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)
 
 (이미지)
-
+<br>
 (유튜브 동영상)
 
 
@@ -77,6 +77,7 @@
 ## 9. 프로젝트 자료
 서비스 URL
 https://jyp-ver2.streamlit.app/
+<br>
 PDF
 [도쿄로컬맛집_JYP.pdf](https://github.com/user-attachments/files/16047278/_JYP.pdf)
 
