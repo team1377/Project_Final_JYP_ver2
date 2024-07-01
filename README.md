@@ -98,5 +98,5 @@ AI 기술은 우리가 지금까지 상상하지 못할 미래를 주도적으�
 공자GPT - AI를 잘 쓰는 자, 미래를 여는 자라. 예측 못할 내일을 대비하고, 새 기회를 만드는 열쇠니라.<br>
 AI와 손잡고 나아가면, 상상 못한 길이 열리고 더 나은 세상을 만들어 갈 수 있으리라.<br><br>
 
-Reference
+Reference<br>
 https://github.com/kimyeoju/Orumi_Project
