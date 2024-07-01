@@ -1,10 +1,13 @@
 # 도쿄로컬맛집
 #### Project_Final_JYP_ver2
-- 도쿄 미식 여해의 새로운 기준이 될 도쿄로컬맛집 서비스입니다.
+- 도쿄 미식 여해의 새로운 기준이 될수도 있는 프로젝트
   * 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)
 
 (이미지)
+
 (유튜브 동영상)
+
+
 ## 1. 프로젝트 배경
 ### 문제 의식
 - 한국 사이트에서 알려주는 맛집 정보는 관광객의 시선에 맞춰져 있어서
@@ -73,8 +76,9 @@
 
 ## 9. 프로젝트 자료
 서비스 URL
-
+https://jyp-ver2.streamlit.app/
 PDF
+[도쿄로컬맛집_JYP.pdf](https://github.com/user-attachments/files/16047278/_JYP.pdf)
 
 
 ## 6. 개발하며 느낀점
