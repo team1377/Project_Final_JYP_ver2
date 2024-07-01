@@ -1,7 +1,6 @@
 # 도쿄로컬맛집
-#### Project_Final_JYP_ver2<br>
-최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)<br>
 - 도쿄 미식 여행의 새로운 기준이 될수도 있는 프로젝트
+- 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)<br>
 
 (이미지)<br>
 ![도쿄로컬맛집2_JYP](https://github.com/team1377/Project_Final_JYP_ver2/assets/172336808/e9ada202-10f5-4e15-9118-4ae535b19e88)
@@ -82,6 +81,7 @@ https://youtu.be/6t5p06jMiFA
 </ol>
 
 ## 9. 프로젝트 자료
+#### Project_Final_JYP_ver2
 서비스 URL
 <br>
 https://jyp-ver2.streamlit.app/
