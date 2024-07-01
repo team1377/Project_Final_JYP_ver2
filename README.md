@@ -8,6 +8,7 @@
 <br>
 (유튜브 동영상)
 <br>
+https://youtu.be/6t5p06jMiFA
 
 ## 1. 프로젝트 배경
 ### 문제 의식
