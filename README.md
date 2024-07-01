@@ -76,9 +76,11 @@
 
 ## 9. 프로젝트 자료
 서비스 URL
+<br>
 https://jyp-ver2.streamlit.app/
 <br>
-PDF
+프리젠테이션 PDF
+<br>
 [도쿄로컬맛집_JYP.pdf](https://github.com/user-attachments/files/16047278/_JYP.pdf)
 
 
