@@ -4,7 +4,7 @@
   * 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)
 
 (이미지)<br>
-![도쿄로컬맛집2_JYP](https://github.com/team1377/Project_Final_JYP_ver2/assets/172336808/1797aa8a-2625-4306-b907-02b5dbd8c6f8)
+![도쿄로컬맛집2_JYP](https://github.com/team1377/Project_Final_JYP_ver2/assets/172336808/e9ada202-10f5-4e15-9118-4ae535b19e88)
 <br>
 (유튜브 동영상)
 <br>
