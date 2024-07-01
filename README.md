@@ -87,8 +87,7 @@ https://jyp-ver2.streamlit.app/
 <br>
 프리젠테이션 PDF
 <br>
-[도쿄로컬맛집_JYP.pdf](https://github.com/user-attachments/files/16047278/_JYP.pdf)
-
+[도쿄로컬맛집_JYP.pdf](https://github.com/user-attachments/files/16048310/_JYP.pdf)
 
 ## 10. 고찰
 
