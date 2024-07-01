@@ -1,5 +1,5 @@
-# (프로젝트명)Project_Final_JYP_ver2
-
+# 도쿄로컬맛집
+#### Project_Final_JYP_ver2
 - 도쿄 미식 여해의 새로운 기준이 될 도쿄로컬맛집 서비스입니다.
   * 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)
 
