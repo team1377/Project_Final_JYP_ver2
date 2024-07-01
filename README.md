@@ -1,5 +1,5 @@
 # 도쿄로컬맛집
-#### Project_Final_JYP_ver2
+Project_Final_JYP_ver2<br>
 - 도쿄 미식 여해의 새로운 기준이 될수도 있는 프로젝트
   * 최신 기술들을 활용한 인공지능 프로젝트 MVP(Minimum Viable Product)
 
