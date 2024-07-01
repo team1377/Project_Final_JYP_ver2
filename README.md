@@ -45,8 +45,8 @@ https://youtu.be/6t5p06jMiFA
 - Python
 - Streamlit
 - Folium
-- OpenAI ChatGPT API
-- Google Gemini API
+- LLM Models (OpenAI ChatGPT, Google Gemini)
+- API (OpenAI ChatGPT API, Google Gemini API)
 
 ## 6. 사용 방법
 <ol>
